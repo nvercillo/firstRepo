@@ -1,0 +1,47 @@
+background(219, 255, 255);
+
+fill(174, 180, 214);
+triangle(200, 28, 350, 150, 50, 150);
+
+
+fill(255, 255, 255);
+rect(60, 150, 280, 210);
+
+
+//brick wall// 
+stroke(0, 0, 0);
+strokeWeight(1);
+for(var w=0; w<21; w+=1){
+    for(var e=0; e<14; e+=1){
+    
+        fill(79, 24, 24);
+        rect(60+20*e, 150+10*w, 20, 10);
+    }
+}
+
+
+//door
+fill(120, 80, 19);
+rect(180, 280, 40, 81);
+
+for(var p=0; p<2; p++){
+    for(var j=0; j<9; j++){ 
+    fill(177, 239, 242);
+    rect(99+22*j, 190+20*p, 24, 24);
+    }
+}
+
+//grass//
+for(var r=0; r<300; r+=1){ 
+
+var tt = random(1,1.4); 
+fill(10*tt, 125*tt, 1*tt);
+noStroke();
+rect(0+r*4,361, 3, 76);
+
+}
+
+
+fill(41, 30, 23);
+ellipse(190, 314, 10, 10);
+

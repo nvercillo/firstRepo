@@ -1,38 +1,94 @@
 import smtplib
+
 from email.mime.text import MIMEText
+
 from email.mime.multipart import MIMEMultipart
+
 from email.mime.multipart import MIMEBase
+
 from email import encoders
+
 import os.path
+
+import psycopg2 as pg2
+
+# my_password = '32darklink'
+#
+# conn = pg2.connect(database = 'client info', user = 'postgres', password = my_password)
+# cur = conn.cursor()
+# cur.execute('SELECT * FROM payment')
+# cur.fetchone()
+#
+#
+#
+#
+#
 
 
 email = 'svercillo7@gmail.com'
+
 password = '32Darklink$'
+
 to = 'svercillo7@gmail.com'
+
 subject = 'This is my automated message'
+
 message = 'This is the message'
+
 file_location= 'C:\\Users\sverc\OneDrive\Documents\Cleint Report Cards\Client 1 lesson plan.docx'
 
 
+
+
+
 msg = MIMEMultipart()
+
 msg['From'] = email
+
 msg['TO'] = to
+
 msg ['Subject'] = subject
+
+
 
 msg.attach(MIMEText(message, 'plain'))
 
+
+
 filename = os.path.basename(file_location)
+
 attachment = open(file_location, "rb")
+
 part = MIMEBase('application', 'octet-stream')
+
 part.set_payload(attachment.read())
+
 encoders.encode_base64(part)
+
 part.add_header('Content-Disposition', "attachemnt; filename= %s" % filename)
+
+
 
 msg.attach(part)
 
+
+
 server = smtplib.SMTP('smtp.gmail.com', 587)
+
 server.starttls()
+
 server.login(email, password)
+
 text = msg.as_string()
+
 server.sendmail(email, to, text)
+
 server.quit()
+
+
+
+
+
+
+
+# print(4)
